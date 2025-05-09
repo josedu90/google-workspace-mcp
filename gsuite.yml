@@ -10,6 +10,7 @@ services:
       - ./config/accounts.json:/app/config/accounts.json
       - ./config/gauth.json:/app/config/gauth.json
       - ./logs:/app/logs
+      - ./docker-entrypoint.sh:/app/docker-entrypoint.sh
     networks:
       - 316adsNet
     deploy:
