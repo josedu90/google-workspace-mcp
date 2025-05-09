@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  mcp_gsuite:
+    image: josedu90/mcp-google-suite:latest
+    env_file:
+      - .env.production
+    entrypoint: ["/app/docker-entrypoint.sh"]
+    volumes:
+      - ./config/accounts.json:/app/config/accounts.json
+      - ./config/gauth.json:/app/config/gauth.json
+      - ./logs:/app/logs
+    networks:
+      - 316adsNet
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+networks:
+  316adsNet:
+    external: true
